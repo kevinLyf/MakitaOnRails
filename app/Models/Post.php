@@ -12,4 +12,9 @@ class Post extends Model
     protected $casts = [
         'tags' => 'array'
     ];
+
+    public function tags()
+    {
+        return $this->hasMany(Tag::class);
+    }
 }

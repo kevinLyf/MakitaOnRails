@@ -47,4 +47,18 @@ class PostController extends Controller
         
         return redirect('/');
     }
+
+    public function tag($tag) {
+
+        $posts = Post::whereJsonContains('tags', $tag)->orderBy('created_at', 'desc')->get();
+
+        $postsOrganized = [];
+        foreach ($posts as $post) {
+            $year = $post->created_at->format('Y');
+            $month = $post->created_at->format('F');
+            $postsOrganized[$year][$month][] = $post;
+        }
+
+        return view('welcome', compact('postsOrganized'));
+    }
 }
