@@ -4,7 +4,12 @@
 
 @section('content')
 <div class="max-w-screen-md mx-auto p-4">
-    <div class="flex flex-col gap-5">
+    @if(isset($tag))
+        <div class="flex items-center justify-center bg-akita w-min whitespace-nowrap h-14 px-5">
+            <h3 class="text-xl font-bold text-white">Tag: {{ $tag }}</h3>
+        </div>
+    @endif
+    <div class="flex flex-col gap-5 mt-5">
         @foreach($postsOrganized as $year => $postsByYear)
             @foreach($postsByYear as $month => $postsByMonth)
                 <div class="flex items-center justify-center bg-akita w-min whitespace-nowrap h-14 px-5">

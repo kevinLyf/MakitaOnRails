@@ -59,6 +59,6 @@ class PostController extends Controller
             $postsOrganized[$year][$month][] = $post;
         }
 
-        return view('welcome', compact('postsOrganized'));
+        return view('welcome', ['postsOrganized' => $postsOrganized, 'tag' => $tag]);
     }
 }
