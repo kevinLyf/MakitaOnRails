@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         $posts = Post::orderBy('created_at', 'desc')->get();
 
@@ -23,7 +24,7 @@ class PostController extends Controller
     }
 
 
-    public function create()
+    public function create(): View
     {
         return view('posts.create');
     }
@@ -34,7 +35,7 @@ class PostController extends Controller
         return view('posts.show', ['post' => $post]);
     }
 
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $post = new Post;
 
