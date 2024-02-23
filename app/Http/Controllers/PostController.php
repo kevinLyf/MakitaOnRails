@@ -37,6 +37,13 @@ class PostController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
+
+        $request->validate(
+            [
+                'title' => 'required|min:5',
+            ]
+        );
+
         $post = new Post;
 
         $post->title = $request->title;
