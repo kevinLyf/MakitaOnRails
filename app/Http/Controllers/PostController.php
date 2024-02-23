@@ -29,7 +29,7 @@ class PostController extends Controller
         return view('posts.create');
     }
 
-    public function show($id)
+    public function show($id): View
     {
         $post = Post::findOrFail($id);
         return view('posts.show', ['post' => $post]);
