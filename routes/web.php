@@ -14,19 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',[PostController::class, 'index']);
+Route::get('/', [PostController::class, 'index']);
 Route::get('/posts/create', [PostController::class, 'create'])->middleware('auth')->middleware('writer');
 Route::get('/posts/{id}', [PostController::class, 'show']);
 Route::post('/posts', [PostController::class, 'store']);
-
 Route::get('/{tag}', [PostController::class, 'tag']);
-
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});

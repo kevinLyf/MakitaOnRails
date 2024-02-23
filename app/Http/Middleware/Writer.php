@@ -18,7 +18,7 @@ class Writer
     {
         $user = Auth::user();
 
-        if($user->role === 'user') {
+        if ($user->role === 'user') {
             return redirect('/');
         }
 
